@@ -8,4 +8,11 @@
 
 1. Ensure Ansible is installed.
 
-2. Run `ansible-pull -U https://github.com/anazworth/mac-playbook.git main.yaml -K`
+2. Install dependencies:
+
+   ```
+   ansible-galaxy install elliotweiser.osx-command-line-tools
+   ansible-galaxy collection install geerlingguy.mac
+   ```
+
+3. Run `ansible-pull -U https://github.com/anazworth/mac-playbook.git main.yaml -K`
