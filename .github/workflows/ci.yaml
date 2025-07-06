@@ -24,6 +24,9 @@ jobs:
       - name: Install test dependencies.
         run: pip3 install ansible ansible-lint
 
+      - name: Install Ansible dependencies
+        run: ansible-galaxy install -r requirements.yaml
+
       - name: Lint code.
         run: |
           ansible-lint
@@ -42,17 +45,16 @@ jobs:
 
       - name: Install test dependencies.
         run: |
-          sudo pip3 install --upgrade pip
-          sudo pip3 install ansible
+          brew install ansible
 
       - name: Set up the test environment.
         run: |
-          ansible-galaxy install -r requirements.yml
+          ansible-galaxy install -r requirements.yaml
 
       - name: Test the playbook's syntax.
-        run: ansible-playbook main.yml --syntax-check
+        run: ansible-playbook main.yaml --syntax-check
 
       - name: Test the playbook.
-        run: ansible-playbook main.yml
+        run: ansible-playbook main.yaml
         env:
           ANSIBLE_FORCE_COLOR: "1"
