@@ -1,0 +1,53 @@
+---
+homebrew_installed_packages:
+  - age
+  - ansible-lint
+  - atuin
+  - bash
+  - bat
+  - btop
+  - fzf
+  - git
+  - gh
+  - gpg
+  - gum
+  - httpie
+  - jq
+  - just
+  - k6
+  - k9s
+  - kind
+  - kubernetes-cli
+  - lazydocker
+  - lazygit
+  - sqlite
+  - neovim
+  - nmap
+  - mise
+  - shellcheck
+  - sops
+  - ssh-copy-id
+  - starship
+  - stow
+  - tealdeer
+  - tmux
+  - trivy
+  - openssl
+  - vim
+  - wget
+  - yazi
+  - yq
+  - zellij
+  - zsh-syntax-highlighting
+
+homebrew_taps: []
+
+homebrew_cask_appdir: /Applications
+
+homebrew_cask_apps:
+  - ghostty
+  - font-jetbrains-mono-nerd-font
+  - font-source-code-pro
+  - podman-desktop
+  - stats
+  - wezterm

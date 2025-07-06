@@ -1,0 +1,13 @@
+---
+- name: Clone dotfiles repo
+  ansible.builtin.git:
+    repo: "https://github.com/anazworth/.dotfiles.git"
+    dest: "{{ ansible_env.HOME }}/.dotfiles"
+    version: main
+    update: true
+
+- name: Run stow for selected dotfiles
+  ansible.builtin.shell: |
+    stow -t ~/ ideavim tmux wallpapers wezterm
+  args:
+    chdir: "{{ ansible_env.HOME }}/.dotfiles"

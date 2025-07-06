@@ -1,0 +1,91 @@
+---
+- name: Ensure Atuin is in .zshrc
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    line: 'eval "$(atuin init zsh)"'
+    create: true
+    state: present
+
+- name: Ensure Mise is in .zshrc
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    line: 'eval "$(~/.local/bin/mise activate zsh)"'
+    create: true
+    state: present
+
+- name: Add aliases block to .zshrc
+  ansible.builtin.blockinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    marker: "# {mark} ANSIBLE ALIASES"
+    block: |
+      # Aliases
+      alias lg='lazygit'
+      alias ta='tmux attach'
+      alias tl='tmux ls'
+    create: true
+    state: present
+
+- name: Add vi mode to .zshrc
+  ansible.builtin.blockinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    block: |
+      # vi Mode
+      bindkey -v
+    create: true
+    state: present
+
+- name: Clone ohmyzsh repo
+  ansible.builtin.git:
+    repo: "https://github.com/ohmyzsh/ohmyzsh.git"
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh"
+    version: master
+    update: true
+
+- name: Ensure $ZSH is in .zshrc
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    line: "export ZSH=$HOME/.oh-my-zsh"
+    create: true
+    state: present
+
+- name: ZSH theme in .zshrc
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    line: 'ZSH_THEME="robbyrussell"'
+    create: true
+    state: present
+
+- name: ZSH theme in .zshrc
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    line: 'ZSH_THEME="robbyrussell"'
+    create: true
+    state: present
+
+- name: Add oh-my-zsh plugins in .zshrc
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    line: "plugins=(git)"
+    create: true
+    state: present
+
+- name: Source oh-my-zsh in .zshrc
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    line: "source $ZSH/oh-my-zsh.sh"
+    create: true
+    state: present
+
+- name: Add syntax highlighting to zsh
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    line: "source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    create: true
+    state: present
+
+- name: Add Startship to prompt
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    line: 'eval "$(starship init zsh)"'
+    create: true
+    state: present
