@@ -49,5 +49,6 @@ homebrew_cask_apps:
   - font-jetbrains-mono-nerd-font
   - font-source-code-pro
   - podman-desktop
+  - rectangle
   - stats
   - wezterm
