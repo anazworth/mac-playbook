@@ -46,6 +46,8 @@ homebrew_cask_appdir: /Applications
 
 homebrew_cask_apps:
   - ghostty
+  - font-cascadia-code-nf
+  - font-cascadia-mono-nf
   - font-jetbrains-mono-nerd-font
   - font-source-code-pro
   - podman-desktop

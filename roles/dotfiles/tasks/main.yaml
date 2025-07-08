@@ -8,6 +8,6 @@
 
 - name: Run stow for selected dotfiles
   ansible.builtin.shell: |
-    stow -t ~/ ideavim tmux wallpapers wezterm
+    stow -t ~/ ideavim tmux wallpapers wezterm ghostty
   args:
     chdir: "{{ ansible_env.HOME }}/.dotfiles"
