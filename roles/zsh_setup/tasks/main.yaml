@@ -83,9 +83,23 @@
     create: true
     state: present
 
-- name: Add Startship to prompt
+- name: Add Starship to prompt
   ansible.builtin.lineinfile:
     path: "{{ ansible_env.HOME }}/.zshrc"
     line: 'eval "$(starship init zsh)"'
     create: true
     state: present
+
+- name: Add DOCKER_HOST to .zshrc
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    line: "export DOCKER_HOST=unix:///$HOME/.local/share/containers/podman/machine/podman.sock"
+    create: true
+    state: present
+
+- name: Clone Tmux TPM repo
+  ansible.builtin.git:
+    repo: "https://github.com/tmux-plugins/tpm.git"
+    dest: "{{ ansible_env.HOME }}/.tmux/plugins/tpm"
+    version: master
+    update: true
